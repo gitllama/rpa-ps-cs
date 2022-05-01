@@ -14,7 +14,7 @@ PowerAutomateではありませんPowerAutomate Desktopです。ややこしい�
 
 PowerAutomate DesktopではscriptとしてPowershell、Javascript、Python、VBSが使用できます（ユーザーが独自にアクションを作成・追加できるカスタムコネクタ機能はPowerAutomateの方だけの機能です）。
 
-そこで、Powershellを核とします。私のコスモはJavascriptは将来切り捨てられるとささやいています。
+そこで、Powershellを核とします。私のコスモはJavascriptが将来切り捨てられるとささやいています。
 
 ## C# Script
 
