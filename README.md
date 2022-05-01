@@ -12,7 +12,7 @@ PowerAutomateではありませんPowerAutomate Desktopです。ややこしい�
 
 ## Powershell
 
-PowerAutomate DesktopではscriptとしてPowershell、Javascript、Pythonが使用できます（ユーザーが独自にアクションを作成・追加できるカスタムコネクタ機能はPowerAutomateの方だけの機能です）。
+PowerAutomate DesktopではscriptとしてPowershell、Javascript、Python、VBSが使用できます（ユーザーが独自にアクションを作成・追加できるカスタムコネクタ機能はPowerAutomateの方だけの機能です）。
 
 そこで、Powershellを核とします。私のコスモはJavascriptは将来切り捨てられるとささやいています。
 
