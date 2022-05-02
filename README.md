@@ -27,3 +27,5 @@ Powershellの構文はなかなか癖がありますが、これでストレス�
 Javascript、Pythonの場合、CDNやnpm/PyPi/Anacondaでライブラリを追加できます。しかし正面突破ではCDNは使えませんし、ScriptのパッケージマネージャーのPathってどういう扱いになるんですかね（確認してないからよくわかりません）？
 
 その点、C# Scriptは```#r```ディレクティブでcode内から直接nugetからアセンブリを読み込むことができます。
+
+あとpython、```import json```で```ImportError: No module named json```出るんですよね。標準モジュールだったような？
