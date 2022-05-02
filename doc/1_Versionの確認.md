@@ -1,6 +1,6 @@
-# 1. RPA(PowerAutomate Desktop) - powershell script - c# script
+# RPA(PowerAutomate Desktop) - powershell script - c# script
 
-## 1-1. Version確認
+## Version確認
 
 特に詳しい説明なしにとりあえず動かしてみる。Versionがわからないと動かないとき困りますからね。
 
@@ -79,3 +79,10 @@ ConvertTo-Json $hash
 ```
 
 ```dotnet script```からcsxを呼ぶと.Net CoreのVersionが表示されると思うのでそのへんのVersion違いの挙動は注意です。
+
+## Python Scriptを使用する場合
+
+```python
+import sys
+print(sys.version)
+```
