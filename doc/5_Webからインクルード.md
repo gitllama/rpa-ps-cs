@@ -1,0 +1,55 @@
+# Webからインクルード
+
+PADはどうせネットにつながないといけないのだから、いっそのことJavascriptをCDNから読むように、ネットからコードをインクルードできるようにしてみます
+
+CDNに登録なんて当然していないので、今回はgithubから直にコードを読み込むこととします
+
+## PAD + PS1
+
+```Web.InvokeWebService.InvokeWebService```アクションを使用する場合、以下のようになります。ps1ではなく、csxコードを呼ぶ場合は```Invoke-Expression```の代わりに```Add-Type -TypeDefinition```を使用するとよいでしょう
+
+```powershell
+Web.InvokeWebService.InvokeWebService Url: $'''https://raw.githubusercontent.com/gitllama/rpa-ps1-cs/main/lib/test.ps1''' Method: Web.Method.Get Accept: $'''application/xml''' ContentType: $'''application/xml''' ConnectionTimeout: 30 FollowRedirection: True ClearCookies: False FailOnErrorStatus: False EncodeRequestBody: True UserAgent: $'''Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.21) Gecko/20100312 Firefox/3.6''' Encoding: Web.Encoding.AutoDetect AcceptUntrustedCertificates: False ResponseHeaders=> WebServiceResponseHeaders Response=> WebServiceResponse StatusCode=> StatusCode
+Scripting.RunPowershellScript Script: $'''$code = @\'
+%WebServiceResponse%
+\'@
+Invoke-Expression $code''' ScriptOutput=> JsonOutput ScriptError=> ScriptError
+
+# [ControlRepository][PowerAutomateDesktop]
+
+{
+  "ControlRepositorySymbols": [],
+  "ImageRepositorySymbol": {
+    "Name": "imgrepo",
+    "ImportMetadata": {},
+    "Repository": "{\r\n  \"Folders\": [],\r\n  \"Images\": [],\r\n  \"Version\": 1\r\n}"
+  }
+}
+
+```
+
+powershell scriptの1ステップで記述する場合は```Invoke-webrequest```を利用し以下のように記述できます
+
+```powershell
+Scripting.RunPowershellScript Script: $'''(Invoke-webrequest -URI \"https://raw.githubusercontent.com/gitllama/rpa-ps1-cs/main/lib/test.ps1\").Content | Invoke-Expression
+''' ScriptOutput=> JsonOutput ScriptError=> ScriptError
+
+# [ControlRepository][PowerAutomateDesktop]
+
+{
+  "ControlRepositorySymbols": [],
+  "ImageRepositorySymbol": {
+    "Name": "imgrepo",
+    "ImportMetadata": {},
+    "Repository": "{\r\n  \"Folders\": [],\r\n  \"Images\": [],\r\n  \"Version\": 1\r\n}"
+  }
+}
+
+```
+
+キャッシュが効いてるわけではなさそうなので、一度読みこんだコードは変数に保存しておく・一度コンパイルかけてテンポラリーとしてローカル保存するなど、高速化には一工夫が必要です。
+
+## PAD + javascript
+
+PADを使用する場合、javascriptはそれほど使い勝手がいいわけではありませんが、ブラウザ操作（Elementの差し替え）の際は使用することとなります。
+
